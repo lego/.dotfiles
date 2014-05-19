@@ -1,0 +1,3 @@
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+eval $(ssh-agent)
+eval "$(hub alias -s)"

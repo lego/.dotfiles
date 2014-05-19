@@ -1,0 +1,25 @@
+Config {
+         font = "-*-terminus-*-*-*-*-15-*-*-*-*-*-*-u"
+       , bgColor = "#000000"
+       , borderColor = "#000000"
+       , fgColor = "#C9A34E"
+--       , fgColor = "grey"
+       , position = TopW R 95
+       , commands = [
+            Run Weather "CYKF" ["-t","<tempC>C","-L","5","-H","20","--normal","green","--high","red","--low","lightblue"] 36000
+          , Run Cpu ["-t", "<fc=#11FF1F>C</fc><fc=#E82C0C>:</fc><total>%", "-L","3","-H","50","--normal","green","--high","red"] 10
+          , Run DynNetwork ["-t", "<rx>KB,<tx>KB" ,"-L","0","-H","512","--normal","green","--high","red"] 10
+          , Run Swap [] 10
+          , Run Date "%a %b %_d %k:%M" "date" 10
+          , Run StdinReader
+          , Run Wireless "wlp2s0" ["-t", "<essid>"] 120
+          , Run GMail "legojoey17@gmail.com" "prgoeggcgcsfiobw" ["-t", "gmail:<count>"] 3000
+          , Run BatteryP ["BAT0"]
+                ["-t", "<acstatus><watts> (<left>%)", "-L", "10", "-H", "80", "-p", "3", "--", "-O", "<fc=green>On</fc> - ", "-i", "", "-L", "-15", "-H", "-5", "-l", "red", "-m", "blue", "-h", "green"] 600
+
+          ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %cpu% | %legojoey17@gmail.com% | <fc=#ee9a00>%date%</fc> | %CYKF%, %wlp2s0wi% %dynnetwork% | %battery%"
+
+       }

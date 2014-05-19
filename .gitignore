@@ -1,0 +1,6 @@
+#nothing! Thus far :D
+
+# keeping .xmonad clean
+.xmonad/xmonad.errors
+.xmonad/xmonad.hi
+.xmonad/xmonad.o
