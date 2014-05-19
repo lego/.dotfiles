@@ -1,4 +1,6 @@
-#nothing! Thus far :D
+# keeping everything clear
+*.swp
+*~
 
 # keeping .xmonad clean
 .xmonad/xmonad.errors
