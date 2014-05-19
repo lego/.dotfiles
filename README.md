@@ -7,3 +7,9 @@ The majority of these dotfiles are in tandom with the following applications
 - XMonad
 - XMobar
 - Vim
+
+-----
+Usage
+-----
+Run symlink.sh to symlink all of these files into your home directory (assuming this folder is ~/.dotfiles)
+
