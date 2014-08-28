@@ -63,6 +63,7 @@ Plugin 'mhinz/vim-signify'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'edkolev/promptline.vim'
 Plugin 'walm/jshint.vim'
+Plugin 'wlangstroth/vim-racket'
 
 
 "" other vim plugins

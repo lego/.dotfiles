@@ -21,6 +21,12 @@ xsetroot -cursor_name left_ptr &
 xset +dpms
 xset dpms 0 0 300
 
-exec dbus-launch xmonad
-
-
+DEFAULT_SESSION=xmonad
+case $1 in
+  xmonad)
+    exec xmonad
+    ;;
+  *)
+    exec $DEFAULT_SESSION
+    ;;
+esac

@@ -58,9 +58,9 @@ main = do
 	    [ ("M-d", scratchpadSpawnActionCustom "gnome-terminal -e 'vim'")
 	    , ("M-f", runOrRaise "firefox-nightly" (className =? "Firefox"))]
     `additionalKeys`
-      [ ((0, xF86XK_AudioLowerVolume ), spawn "pulseaudio-ctl down")
-      , ((0, xF86XK_AudioRaiseVolume ), spawn "pulseaudio-ctl up")
-      , ((0, xF86XK_AudioMute ), spawn "pulseaudio-ctl mute")
+      [ ((0, xF86XK_AudioLowerVolume ), spawn "amixer set Master 3-")
+      , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer set Master 3+")
+      , ((0, xF86XK_AudioMute ), spawn "amixer set Master toggle")
       --, ((0, xF86XK_KbdBrightnessDown ), spawn "asus-kbd-backlight down")
       --, ((0, xF86XK_KbdBrightnessUp ), spawn "asus-kbd-backlight up")
       , ((0, xK_Print), spawn "scrot")

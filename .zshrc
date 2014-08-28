@@ -1,38 +1,48 @@
-##ME
+## zsh configuration ##
 DEFAULT_USER="joey"
-# path to oh my zsh
 ZSH=$HOME/.oh-my-zsh
-
 ZSH_THEME="agnoster"
+plugins=(git archlinux npm bundler rbates)
+source $ZSH/oh-my-zsh.sh
+source $ZSH/zsh-syntax-highlighting-filetypes.zsh
 
-# history
+### general terminal configuration ###
 HISTSIZE=1000
 SAVEHIST=1000
 
-# variables
-export PATH=${HOME}/.bin:/bin:${PATH}
+export TERM=xterm-256color
+eval $(dircolors -b $HOME/.dircolors)
+
+## variables
+# programming
+export PATH=/opt/android-sdk/platform-tools/:/opt/android-sdk/tools/:${HOME}/.bin:/bin:${PATH}
+export GOPATH="/home/joey/code/go"
+export EDITOR="vim"
+
+# misc
+export STEAM_FRAME_FORCE_CLOSE=1
+
 # specific path for OS cross compiler
 export PATH=${HOME}/code/projects/JoOS/opt/cross/bin:${PATH}
-export TERM=xterm-256color
-export EDITOR="vim"
-export GOPATH="/home/joey/code/go"
 
+
+## aliases
 # raspberry pi ttl connection alias
 alias rpi='sudo screen /dev/ttyUSB0 115200'
-
 # woops typed vi! alias
 alias vi='vim'
 # always fill in all mkdir's
 alias mkdir='mkdir -p'
 
 # et lul
+alias dog='cat'
 alias please='sudo'
 alias such='git'
 alias very='git'
-alias wow='git status'
+alias wow='git status' #-> actually really useful!
 alias gg='sudo shutdown now'
 
-# functions
+### functions ###
 ac() { # compress a file or folder
     case "$1" in
        tar.bz2|.tar.bz2) tar cvjf "${2%%/}.tar.bz2" "${2%%/}/" ;;
@@ -115,16 +125,7 @@ status() {
     print "Term  : $TTY ($TERM), ${BAUD:+$BAUD bauds, }$COLUMNS x $LINES chars"
     print "Login : $LOGNAME (UID = $EUID) on $HOST"
     print "Uptime:$(uptime)"
+    print "Distribution information:"
     print "$(cat /etc/[A-Za-z]*[_-][rv]e[lr]*)"
 }
-
-#zsh plugins
-plugins=(git archlinux npm bundler rbates)
-
-# load up ohmyzsh and plugins
-source $ZSH/oh-my-zsh.sh
-source $ZSH/zsh-syntax-highlighting-filetypes.zsh
-
-# load up ls colours
-eval $(dircolors -b $HOME/.dircolors)
 
