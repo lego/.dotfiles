@@ -15,7 +15,7 @@ eval $(dircolors -b $HOME/.dircolors)
 
 ## variables
 # programming
-export PATH=/opt/android-sdk/platform-tools/:/opt/android-sdk/tools/:${HOME}/.bin:/bin:${PATH}
+export PATH=~/.gem/ruby/2.2.0/bin:/opt/android-sdk/platform-tools/:/opt/android-sdk/tools/:${HOME}/.bin:/bin:${PATH}
 export GOPATH="/home/joey/code/go"
 export EDITOR="vim"
 
@@ -24,7 +24,10 @@ export STEAM_FRAME_FORCE_CLOSE=1
 
 # specific path for OS cross compiler
 export PATH=${HOME}/code/projects/JoOS/opt/cross/bin:${PATH}
+export _JAVA_AWT_WM_NONREPARENTING=1 
 
+alias python=python2
+alias pip=pip2
 
 ## aliases
 # raspberry pi ttl connection alias
@@ -33,8 +36,10 @@ alias rpi='sudo screen /dev/ttyUSB0 115200'
 alias vi='vim'
 # always fill in all mkdir's
 alias mkdir='mkdir -p'
+alias stock='cd ~/code/projects/stock-octo-ninja/'
 
 # et lul
+alias damn-wifi='sudo ip link set dev wlp2s0 down && sudo wifi-menu'
 alias dog='cat'
 alias please='sudo'
 alias such='git'

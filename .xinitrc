@@ -14,8 +14,15 @@ export GPG_AGENT_INFO
 export GNOME_KEYRING_CONTROL
 export GNOME_KEYRING_PID
 
+# Make java apps work (specifically android studio)
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+alias python=python2
+alias pip=pip2
+
 # set mouse pointer
 xsetroot -cursor_name left_ptr &
+
 
 # screen powersave
 xset +dpms

@@ -165,7 +165,7 @@ myLayoutHook = onWorkspace "4:chat" imLayout $ onWorkspace "6:vm" fullL $ onWork
 --personal settings
 --terminal
 myTerminal :: String
-myTerminal    = "gnome-terminal"
+myTerminal    = "xfce4-terminal"
 
 --keys/button bindings
 --modmask
