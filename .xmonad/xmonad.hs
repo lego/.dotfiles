@@ -55,20 +55,18 @@ main = do
               }
     } 
     `additionalKeysP`
-	    [ ("M-d", scratchpadSpawnActionCustom "gnome-terminal -e 'vim'")
-	    , ("M-f", runOrRaise "firefox-nightly" (className =? "Firefox"))]
+	    [ ("M-d", scratchpadSpawnActionCustom "xfce4-terminal -e 'vim'")
+	    , ("M-f", runOrRaise "chromium" (className =? "Chromium"))]
     `additionalKeys`
       [ ((0, xF86XK_AudioLowerVolume ), spawn "amixer set Master 3-")
       , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer set Master 3+")
       , ((0, xF86XK_AudioMute ), spawn "amixer set Master toggle")
       --, ((0, xF86XK_KbdBrightnessDown ), spawn "asus-kbd-backlight down")
       --, ((0, xF86XK_KbdBrightnessUp ), spawn "asus-kbd-backlight up")
-      , ((0, xK_Print), spawn "scrot")
+      , ((0, xK_Print), spawn "cd ~/Documents/screenshots/ && scrot")
       
       -- launching programs
-      , ((0, xF86XK_Mail), runOrRaise "thunderbird" (className =? "Thunderbird"))
-      , ((0, xF86XK_Messenger), runOrRaise "pidgin" (className =? "Pidgin"))
-      , ((0, 0x1008ff18), runOrRaise "firefox-aurora" (className =? "Firefox"))
+      , ((0, 0x1008ff18), runOrRaise "chromium" (className =? "Chromium"))
       ]
       
 -- Hooks --
@@ -80,23 +78,10 @@ myManageHook = composeAll
     , className =? "Xmessage"       --> doCenterFloat
     , className =? "Xfce4-notifyd"  --> doIgnore
     , className =? "stalonetray"    --> doIgnore
-    , className =? "Thunderbird"    --> doShift "2:web"
-    , className =? "Pidgin"         --> doShift "4:chat"
-    , className =? "Skype"          --> doShift "4:chat"
-    , className =? "MPlayer"        --> doShift "8:vid"
-    , className =? "mplayer2"       --> doShift "8:vid"
-    , className =? "mpv"            --> doShift "8:vid"
-    , className =? "Crossover"      --> doShift "7:games"
-    , className =? "Steam"          --> doShift "7:games"
-    , className =? "Wine"           --> doShift "7:games"
-    , className =? "rdesktop"       --> doShift "6:vm"
-    , className =? "Texmaker"       --> doShift "5:doc"
-    , className =? "SeamlessRDP"    --> doShift "5:doc"
     , className =? "MPlayer"       --> (ask >>= doF . W.sink)       
     , className =? "Vlc" --> doFloat
     , className =? "Gimp" --> doFloat
     , className =? "XCalc" --> doFloat
-    , className =? "Firefox"        --> doShift "2:web"
     , manageDocks
     , scratchpadManageHook (W.RationalRect 0.125 0.25 0.75 0.5)
     ]
@@ -133,7 +118,7 @@ myXPConfig = defaultXPConfig
   }
 
 -- layouthook
-myLayoutHook = onWorkspace "4:chat" imLayout $ onWorkspace "6:vm" fullL $ onWorkspace "8:vid" fullL $ onWorkspace "7:games" standardLayouts $ standardLayouts
+myLayoutHook = onWorkspace "8:music" fullL $ standardLayouts
   where
     standardLayouts = avoidStruts $ (tiled ||| reflectTiled ||| Mirror tiled ||| Grid ||| Full)
 
@@ -141,18 +126,6 @@ myLayoutHook = onWorkspace "4:chat" imLayout $ onWorkspace "6:vm" fullL $ onWork
     tiled = smartBorders (ResizableTall 1 (2/100) (1/2) [])
     reflectTiled = (reflectHoriz tiled)
     full = noBorders Full
-
-    --im layout
-    --show pidget tiled left, skype right
-    imLayout = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz $ withIM skypeRatio skypeRoster (tiled ||| reflectTiled ||| Grid) where
-      chatLayout = Grid
-      ratio = (1 % 9)
-      skypeRatio = (1 % 8)
-      pidginRoster = And (ClassName "Pidgin") (Role "buddy_list")
-      skypeRoster = (ClassName "Skype") `And`
-                    (Not (Title "Options")) `And`
-                      (Not (Role "Chats")) `And`
-                        (Not (Role "CallWindowForm"))
     
     --weblayout
     webL = avoidStruts $ full ||| tiled ||| reflectHoriz tiled
@@ -182,4 +155,4 @@ myFocusedBorderColor = "#0C31E8"
 
 --Workspaces
 myWorkspaces :: [WorkspaceId]
-myWorkspaces = [ "1:main", "2:web", "3:dev", "4:chat", "5:doc", "6:vm", "7:games", "8:vid"]
+myWorkspaces = [ "1:web", "2:subl", "3:debug", "4:term", "5:doc", "6:db", "7:ext", "8:music"]
