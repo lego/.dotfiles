@@ -4,21 +4,8 @@
 #
 # Executed by startx (executes the x11 session)
 
-# Start a D-Bus session
-source /etc/X11/xinit/xinitrc.d/30-dbus
-
-# Start GNOME Keyring
-eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcsll,secrets,ssh)
-export SSH_AUTH_SOCK
-export GPG_AGENT_INFO
-export GNOME_KEYRING_CONTROL
-export GNOME_KEYRING_PID
-
 # Make java apps work (specifically android studio)
 export _JAVA_AWT_WM_NONREPARENTING=1
-
-alias python=python2
-alias pip=pip2
 
 # set mouse pointer
 xsetroot -cursor_name left_ptr &

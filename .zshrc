@@ -3,40 +3,58 @@ DEFAULT_USER="joey"
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
 plugins=(git archlinux npm bundler rbates)
-source $ZSH/oh-my-zsh.sh
-source $ZSH/zsh-syntax-highlighting-filetypes.zsh
 
-### general terminal configuration ###
+source $ZSH/oh-my-zsh.sh
+source $ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH/zsh-syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
+
+setopt appendhistory autocd extendedglob nomatch notify
+unsetopt beep
+
+# terminal configuration
+HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
 export TERM=xterm-256color
 eval $(dircolors -b $HOME/.dircolors)
 
+# keychain is great!
+eval $(keychain --eval --agents ssh -Q --quiet $(cat ~/.keylist))
+
 ## variables
 # programming
 export PATH=~/.gem/ruby/2.2.0/bin:/opt/android-sdk/platform-tools/:/opt/android-sdk/tools/:${HOME}/.bin:/bin:${PATH}
-export GOPATH="/home/joey/code/go"
 export EDITOR="vim"
 
 # misc
+export _JAVA_AWT_WM_NONREPARENTING=1 
 export STEAM_FRAME_FORCE_CLOSE=1
 
 # specific path for OS cross compiler
-export PATH=${HOME}/code/projects/JoOS/opt/cross/bin:${PATH}
-export _JAVA_AWT_WM_NONREPARENTING=1 
-
-alias python=python2
-alias pip=pip2
+export PATH=${HOME}/code/OS/JoOS/opt/cross/bin:${PATH}
 
 ## aliases
-# raspberry pi ttl connection alias
+
+# arch things
+if [ -f /etc/arch-release ]; then
+  alias python=python2
+  alias pip=pip2
+fi
+
+# private aliases mostly for folder shortcuts
+if [ -f ~/.aliases ]; then
+  source ~/.aliases
+fi
+
+# raspberry pi ttl alias
 alias rpi='sudo screen /dev/ttyUSB0 115200'
+
 # woops typed vi! alias
 alias vi='vim'
+
 # always fill in all mkdir's
 alias mkdir='mkdir -p'
-alias stock='cd ~/code/projects/stock-octo-ninja/'
 
 # et lul
 alias damn-wifi='sudo ip link set dev wlp2s0 down && sudo wifi-menu'
@@ -122,15 +140,3 @@ echo "Sorry, '$1' is not a valid archive."
      echo "zip, 7z, xz and lzma"
     fi
 }
-
-# Show some status info
-status() {
-    print "Date  : "$(date "+%Y-%m-%d %H:%M:%S")
-    print "Shell : Zsh $ZSH_VERSION (PID = $$, $SHLVL nests)"
-    print "Term  : $TTY ($TERM), ${BAUD:+$BAUD bauds, }$COLUMNS x $LINES chars"
-    print "Login : $LOGNAME (UID = $EUID) on $HOST"
-    print "Uptime:$(uptime)"
-    print "Distribution information:"
-    print "$(cat /etc/[A-Za-z]*[_-][rv]e[lr]*)"
-}
-
