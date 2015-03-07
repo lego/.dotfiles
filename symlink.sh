@@ -1,5 +1,5 @@
 #!/bin/bash
-FILES=`ls -a | tail -n +3 | grep -v "setup-symlinks.sh" | grep -v ".git" | grep -v ".gitignore" | grep -v "README.md"`
+FILES=`ls -a | tail -n +3 | grep -v "symlink.sh" | grep -v ".git" | grep -v ".gitignore" | grep -v "README.md"`
 cd ..
 for f in $FILES
 do
