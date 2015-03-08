@@ -7,20 +7,13 @@
 # Make java apps work (specifically android studio)
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
 # set mouse pointer
 xsetroot -cursor_name left_ptr &
-
 
 # screen powersave
 xset +dpms
 xset dpms 0 0 300
 
-DEFAULT_SESSION=xmonad
-case $1 in
-  xmonad)
-    exec xmonad
-    ;;
-  *)
-    exec $DEFAULT_SESSION
-    ;;
-esac
+exec xmonad

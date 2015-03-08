@@ -15,6 +15,7 @@ import Data.Ratio ((%))
 -- actions
 import XMonad.Actions.CycleWS
 import XMonad.Actions.WindowGo
+import XMonad.Actions.SpawnOn (spawnOn)
 -- utils
 import XMonad.Util.Scratchpad
 import XMonad.Util.Run
@@ -41,6 +42,7 @@ main = do
   nitroproc <- spawnPipe "nitrogen --restore"
   xmonad $ defaultConfig {
       workspaces = myWorkspaces
+  --, startupHook = myStartupHook
     , manageHook = myManageHook
     , layoutHook = myLayoutHook
     , terminal    = myTerminal
@@ -85,6 +87,13 @@ myManageHook = composeAll
     , manageDocks
     , scratchpadManageHook (W.RationalRect 0.125 0.25 0.75 0.5)
     ]
+
+-- startup hook --
+--myStartupHook = do 
+--  spawnOn (myWorkspaces!!0) "chromium"
+--  spawnOn (myWorkspaces!!1) "subl3"
+--  spawnOn (myWorkspaces!!3) "xfce4-terminal"
+--  spawnOn vim (myWorkspaces!!1) "xfce4-terminal"
 
 --logHook
 myLogHook :: Handle -> X ()
