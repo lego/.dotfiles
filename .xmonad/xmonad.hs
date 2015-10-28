@@ -7,7 +7,7 @@
 --
 -- Import stuff
 import XMonad
-import qualified XMonad.StackSet as W 
+import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
 import System.IO
 import Graphics.X11.ExtraTypes.XF86
@@ -25,7 +25,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.ManageHook
-import Data.List 
+import Data.List
 -- layouts
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
@@ -33,7 +33,7 @@ import XMonad.Layout.Reflect
 import XMonad.Layout.IM
 import XMonad.Layout.Tabbed
 import XMonad.Layout.PerWorkspace (onWorkspace)
-import XMonad.Layout.Grid 
+import XMonad.Layout.Grid
 
 main = do
   -- init xmobar
@@ -55,7 +55,7 @@ main = do
               { ppOutput = hPutStrLn xmproc
               , ppTitle = xmobarColor "green" "" . shorten 50
               }
-    } 
+    }
     `additionalKeysP`
 	    [ ("M-d", scratchpadSpawnActionCustom "xfce4-terminal -e 'vim'")
 	    , ("M-f", runOrRaise "chromium" (className =? "Chromium"))]
@@ -63,33 +63,36 @@ main = do
       [ ((0, xF86XK_AudioLowerVolume ), spawn "amixer set Master 3-")
       , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer set Master 3+")
       , ((0, xF86XK_AudioMute ), spawn "amixer set Master toggle")
-      --, ((0, xF86XK_KbdBrightnessDown ), spawn "asus-kbd-backlight down")
-      --, ((0, xF86XK_KbdBrightnessUp ), spawn "asus-kbd-backlight up")
-      , ((0, xK_Print), spawn "cd ~/Documents/screenshots/ && scrot")
-      
+      , ((0, xF86XK_KbdBrightnessDown ), spawn "sudo asus-kbd-backlight down")
+      , ((0, xF86XK_KbdBrightnessUp ), spawn "sudo asus-kbd-backlight up")
+      , ((0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 10")
+      , ((0, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 10")
+      , ((0, xK_Print), spawn "scrot")
+
       -- launching programs
       , ((0, 0x1008ff18), runOrRaise "chromium" (className =? "Chromium"))
       ]
-      
+
 -- Hooks --
 
 -- automatically switch windows to workspaces
 myManageHook = composeAll
    [ isFullscreen                  --> doFullFloat
-    , title =? "Open File"      --> doCenterFloat
     , className =? "Xmessage"       --> doCenterFloat
     , className =? "Xfce4-notifyd"  --> doIgnore
     , className =? "stalonetray"    --> doIgnore
-    , className =? "MPlayer"       --> (ask >>= doF . W.sink)       
+    , className =? "MPlayer"       --> (ask >>= doF . W.sink)
     , className =? "Vlc" --> doFloat
     , className =? "Gimp" --> doFloat
+    , title =? "Open File" --> doCenterFloat
+    , title =? "Open" --> doCenterFloat
     , className =? "XCalc" --> doFloat
     , manageDocks
     , scratchpadManageHook (W.RationalRect 0.125 0.25 0.75 0.5)
     ]
 
 -- startup hook --
---myStartupHook = do 
+--myStartupHook = do
 --  spawnOn (myWorkspaces!!0) "chromium"
 --  spawnOn (myWorkspaces!!1) "subl3"
 --  spawnOn (myWorkspaces!!3) "xfce4-terminal"
@@ -135,7 +138,7 @@ myLayoutHook = onWorkspace "8:music" fullL $ standardLayouts
     tiled = smartBorders (ResizableTall 1 (2/100) (1/2) [])
     reflectTiled = (reflectHoriz tiled)
     full = noBorders Full
-    
+
     --weblayout
     webL = avoidStruts $ full ||| tiled ||| reflectHoriz tiled
 
