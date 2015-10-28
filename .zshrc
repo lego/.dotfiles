@@ -20,14 +20,22 @@ export TERM=xterm-256color
 eval $(dircolors -b $HOME/.dircolors)
 
 ## keychain is great! (ssh key agent)
-eval $(keychain --eval --agents ssh -Q --quiet $(cat ~/.keylist))
+# eval $(keychain --eval --agents ssh -Q --quiet $(cat ~/.keylist))
 
 # variables
 
 ## programming
 export EDITOR="vim"
 
+## virtualenvs
+export WORKON_HOME=~/.venv
+
 ## misc
+export GOPATH=~/.go
+export PATH=~/.go/bin:$PATH
+export PATH=~/.bin:$PATH
+export PATH=~/.cabal/bin:$PATH
+export PATH=/usr/lib/ccache/bin:$PATH
 
 ### java application window fix (xmonad)
 export _JAVA_AWT_WM_NONREPARENTING=1 
@@ -35,9 +43,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 ### steam window backgrounding fix (xmonad)
 export STEAM_FRAME_FORCE_CLOSE=1
 
-# private varaibles mostly for unique PATH and such
-if [ -f ~/.varaibles ]; then
-  source ~/.varaibles
+### private variables mostly for unique PATH and such
+if [ -f ~/.variables ]; then
+  source ~/.variables
 fi
 
 # aliases
