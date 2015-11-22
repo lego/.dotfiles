@@ -60,8 +60,8 @@ main = do
 	    [ ("M-d", scratchpadSpawnActionCustom "xfce4-terminal -e 'vim'")
 	    , ("M-f", runOrRaise "chromium" (className =? "Chromium"))]
     `additionalKeys`
-      [ ((0, xF86XK_AudioLowerVolume ), spawn "amixer set Master 3-")
-      , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer set Master 3+")
+      [ ((0, xF86XK_AudioLowerVolume ), spawn "amixer -q sset Master 3%-")
+      , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer -q sset Master 3%+")
       , ((0, xF86XK_AudioMute ), spawn "amixer set Master toggle")
       , ((0, xF86XK_KbdBrightnessDown ), spawn "sudo asus-kbd-backlight down")
       , ((0, xF86XK_KbdBrightnessUp ), spawn "sudo asus-kbd-backlight up")

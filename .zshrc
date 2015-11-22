@@ -24,6 +24,8 @@ eval $(dircolors -b $HOME/.dircolors)
 
 # variables
 
+source /usr/share/nvm/init-nvm.sh
+
 ## programming
 export EDITOR="vim"
 
@@ -79,7 +81,7 @@ alias dog='cat'
 alias please='sudo'
 alias such='git'
 alias very='git'
-alias wow='git status' #-> actually really useful!
+alias wow='git status --ignore-submodules=dirty' #-> actually really useful!
 alias gg='sudo shutdown now'
 
 # functions
