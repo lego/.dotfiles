@@ -9,6 +9,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
+# set up icon tray
+stalonetray &
+
 # set mouse pointer
 xsetroot -cursor_name left_ptr &
 
