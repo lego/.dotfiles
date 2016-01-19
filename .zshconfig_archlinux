@@ -1,0 +1,15 @@
+# fix default python to be python2
+alias python=python2
+alias pip=pip2
+
+## raspberry pi ttl alias
+alias rpi='sudo screen /dev/ttyUSB0 115200'
+
+### java application window fix (xmonad)
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+### steam window backgrounding fix (xmonad)
+export STEAM_FRAME_FORCE_CLOSE=1
+
+# wifi fix
+alias damn-wifi='sudo ip link set dev wlp2s0 down && sudo wifi-menu'
