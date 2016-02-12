@@ -23,8 +23,12 @@ fi
 
 # initialize oh my zsh
 source $ZSH/oh-my-zsh.sh
-source $ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $ZSH/zsh-syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
+if [ -f $ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+  source $ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+if [ -f $ZSH/zsh-syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh ]; then
+  source $ZSH/zsh-syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
+fi
 
 setopt appendhistory autocd extendedglob nomatch notify
 unsetopt beep
