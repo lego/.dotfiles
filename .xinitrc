@@ -12,6 +12,9 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 # set up icon tray
 stalonetray &
 
+# start rescuetime
+rescuetime &
+
 # set mouse pointer
 xsetroot -cursor_name left_ptr &
 
