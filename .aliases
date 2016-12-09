@@ -17,14 +17,13 @@ alias lsd='ls -l | grep "^d"'
 # Always use color output for `ls`
 alias ls="command ls ${colorflag}"
 
-## gulp es6 for testing fix
-alias gulp='node --harmony `which gulp`'
-
 ## woops typed vi! alias
 alias vi='vim'
 
-## always fill in all mkdir's
+## always fill create directors recursively if not found
 alias mkdir='mkdir -p'
+
+alias cdrd='cd $(git rev-parse --show-toplevel)'
 
 ## et lul
 alias dog='cat'
