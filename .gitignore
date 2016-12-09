@@ -2,6 +2,9 @@
 *.swp
 *~
 
+# private configuratin
+.extra
+
 # keeping .xmonad clean
 .xmonad/xmonad.errors
 .xmonad/xmonad.hi

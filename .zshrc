@@ -44,6 +44,7 @@ for file in ~/.{path,exports,aliases,functions,extra}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
+
 ## external archlinux specific stuff
 if [ -f /etc/arch-release ]; then
   source ~/.zshconfig_archlinux

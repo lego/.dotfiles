@@ -1,4 +1,3 @@
-# TODO organize/conditionally export these if the directory exists (e.g. mac only ones wont load)
 export PATH=/usr/local/share/python:$PATH
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH=/opt/vagrant/bin:$PATH
