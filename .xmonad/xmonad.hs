@@ -24,6 +24,7 @@ import XMonad.Prompt
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.EwmhDesktops
 import XMonad.ManageHook
 import Data.List
 -- layouts
@@ -40,9 +41,10 @@ main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc"
   -- init nitrogen (background image)
   nitroproc <- spawnPipe "nitrogen --restore"
-  xmonad $ defaultConfig {
+  xmonad $ ewmh defaultConfig {
       workspaces = myWorkspaces
   --, startupHook = myStartupHook
+    , handleEventHook = handleEventHook defaultConfig <+> fullscreenEventHook
     , manageHook = myManageHook
     , layoutHook = myLayoutHook
     , terminal    = myTerminal
@@ -57,8 +59,8 @@ main = do
               }
     }
     `additionalKeysP`
-	    [ ("M-d", scratchpadSpawnActionCustom "xfce4-terminal -e 'vim'")
-	    , ("M-f", runOrRaise "chromium" (className =? "Chromium"))]
+      [ ("M-d", scratchpadSpawnActionCustom "xfce4-terminal -e 'vim'")
+      , ("M-f", runOrRaise "chromium" (className =? "Chromium"))]
     `additionalKeys`
       [ ((0, xF86XK_AudioLowerVolume ), spawn "amixer -q sset Master 3%-")
       , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer -q sset Master 3%+")
