@@ -10,20 +10,14 @@ HISTSIZE=1000
 SAVEHIST=1000
 unsetopt beep
 
+export TERM=xterm-256color
+setopt autocd extendedglob nomatch notify
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions colored-man-pages npm bundler rails ruby rvm vagrant gem adb bower gitfast github node pip)
+plugins=(colored-man-pages npm bundler rails ruby rvm vagrant gem adb bower gitfast github node pip)
 
-bindkey '``' autosuggest-accept
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=3  # Options: 1, 2, 3, 4
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=("expand-or-complete")
-
-setopt autocd extendedglob nomatch notify
-unsetopt correct
-
-export TERM=xterm-256color
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/

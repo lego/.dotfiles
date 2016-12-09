@@ -1,5 +1,5 @@
 #!/bin/bash
-FILES=`ls -a | tail -n +3 | grep -v "symlink.sh" | grep -v ".git" | grep -v ".gitignore" | grep -v "README.md"`
+FILES=`ls -a | tail -n +3 | grep -v "symlink.sh" | grep -v -P 'git$' | grep -v ".gitignore" | grep -v "README.md"`
 cd ..
 for f in $FILES
 do
@@ -24,7 +24,7 @@ do
         then echo "already linked"
         else echo "exists (could not link)"
       fi
-    else 
+    else
       if ln -s .dotfiles/$f $f 2> /dev/null
         then echo success
       fi
