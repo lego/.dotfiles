@@ -38,9 +38,9 @@ import XMonad.Layout.Grid
 
 main = do
   -- init xmobar
-  xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc"
+  xmproc <- spawnPipe "/u3/j5pereira/.cabal/bin/xmobar ~/.xmonad/xmobarrc"
   -- init nitrogen (background image)
-  nitroproc <- spawnPipe "nitrogen --restore"
+  nitroproc <- spawnPipe "/u3/j5pereira/local/bin/nitrogen --restore"
   xmonad $ ewmh defaultConfig {
       workspaces = myWorkspaces
   --, startupHook = myStartupHook
@@ -59,16 +59,14 @@ main = do
               }
     }
     `additionalKeysP`
-      [ ("M-d", scratchpadSpawnActionCustom "xfce4-terminal -e 'vim'")
-      , ("M-f", runOrRaise "chromium" (className =? "Chromium"))]
+      [
+        ("M-f", runOrRaise "chromium" (className =? "Chromium"))
+      , ("M-a", runOrRaise "/u3/j5pereira/.bin/atom" (className =? "Atom"))
+      ]
     `additionalKeys`
       [ ((0, xF86XK_AudioLowerVolume ), spawn "amixer -q sset Master 3%-")
       , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer -q sset Master 3%+")
       , ((0, xF86XK_AudioMute ), spawn "amixer set Master toggle")
-      , ((0, xF86XK_KbdBrightnessDown ), spawn "sudo asus-kbd-backlight down")
-      , ((0, xF86XK_KbdBrightnessUp ), spawn "sudo asus-kbd-backlight up")
-      , ((0, xF86XK_MonBrightnessDown ), spawn "xbacklight -dec 10")
-      , ((0, xF86XK_MonBrightnessUp ), spawn "xbacklight -inc 10")
       , ((0, xK_Print), spawn "scrot")
 
       -- launching programs
@@ -152,7 +150,7 @@ myLayoutHook = onWorkspace "8:music" fullL $ standardLayouts
 --personal settings
 --terminal
 myTerminal :: String
-myTerminal    = "xfce4-terminal"
+myTerminal    = "gnome-terminal"
 
 --keys/button bindings
 --modmask

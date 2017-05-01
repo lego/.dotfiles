@@ -26,7 +26,7 @@ plugins=(colored-man-pages npm bundler rails ruby rvm vagrant gem adb bower gitf
 # Preferred options: robbyrussell, soliah, kafeitu, gallifrey, nebirhos,
 # philips, cypher, dstufft, risto, half-life, jbergantine, norm, essembeh
 # fina (should be personalized more), murilasso, nebirhos
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -48,6 +48,8 @@ if [[ "$(uname)" == "Darwin" ]]; then
   plugins+=(osx brew)
   export CLICOLOR=YES
   # export LSCOLORS="$(cat $HOME/.dircolors)"
+elif lsb_release -d | grep "Ubuntu" >/dev/null; then
+  plugins+=()
 else
   # ArchLinux specific setup
   plugins+=(archlinux)
