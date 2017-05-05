@@ -38,8 +38,8 @@ set si " Smart indent
 " vundle stuff
 """"""""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
-Plugin 'gmarik/vundle'
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
 
 "scripts on github
 Plugin 'tpope/vim-fugitive'
@@ -65,6 +65,7 @@ Plugin 'edkolev/promptline.vim'
 Plugin 'walm/jshint.vim'
 Plugin 'wlangstroth/vim-racket'
 
+call vundle#end()
 
 "" other vim plugins
 let g:ycm_key_list_previous_completion=['<Up>']
