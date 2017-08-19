@@ -82,3 +82,8 @@ unset file
 if [ -f /etc/arch-release ]; then
   source ~/.zshconfig_archlinux
 fi
+
+unsetopt correct_all
+setopt correct
+
+export PATH="/usr/local/opt/gettext/bin:$PATH"

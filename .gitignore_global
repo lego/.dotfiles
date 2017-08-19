@@ -1,5 +1,5 @@
 # OS X
-_Store
+.DS_Store
 Thumbs.db
 *~
 *.swp
@@ -43,5 +43,6 @@ Session.vim
 # Languages
 **/node_modules
 
+*.tar.gz
 
 # vim:ft=conf
