@@ -1,18 +1,18 @@
 [user]
-	name = Joey Pereira
+  name = Joey Pereira
   email = joey@pereira.io
 [github]
   user = xLegoz
 [push]
-	default = current
+  default = current
 [core]
-	editor = vim
+  editor = vim
   whitespace = space-before-tab,-indent-with-non-tab,trailing-space
-	excludesfile = ~/.gitignore_global
-	autocrlf = false
+  excludesfile = ~/.gitignore_global
+  autocrlf = false
 [merge]
-	tool = meld
-	conflictstyle = diff3
+  tool = meld
+  conflictstyle = diff3
 # Use `origin` as the default remote on the `master` branch in all cases
 [branch "master"]
   remote = origin
@@ -25,19 +25,19 @@
   smudge = git-lfs smudge %f
 [diff]
   renames = copies
-	submodule = log
+  submodule = log
   mnemonicprefix = true
-	algorithm = patience
+  algorithm = patience
 [difftool]
   prompt = false
 [pull]
-	rebase = true
+  rebase = true
 [rerere]
-	enabled = true
+  enabled = true
 [status]
-	submodulesummary = 1
+  submodulesummary = 1
 [help]
-	autocorrect = 15
+  autocorrect = 15
 
 [alias]
   l = log --pretty=oneline -n 20 --graph --abbrev-commit
@@ -67,19 +67,22 @@
   theirs = !git checkout --theirs $@ && git add $@
   addp = add --patch
   filelog = log -u
-	ctags = !.git/hooks/ctags
+  ctags = !.git/hooks/ctags
 
 [color]
   ui = auto
+  branch = auto
+  diff = auto
+  status = auto
 [color "branch"]
   current = yellow reverse
   local = yellow
   remote = green
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
+  meta = yellow
+  frag = magenta
+  old = red
+  new = green
 [color "status"]
   added = yellow
   changed = green
