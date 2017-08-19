@@ -1,0 +1,12 @@
+# Enable kwm compatibility mode
+khd kwm on
+
+# Set mode colors
+khd mode default  color 0x00000000
+khd mode switcher color 0xddbdd322
+khd mode swap     color 0xdd458588
+
+- 0x50             :   khd -e "mode activate switcher"
+switcher - 0x50    :   khd -e "mode activate default"
+swap     - 0x50    :   khd -e "mode activate default"
+switcher - s       :   khd -e "mode activate swap"
