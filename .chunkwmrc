@@ -5,7 +5,7 @@
 #       loading a plugin. '~' expansion is supported.
 #
 
-chunkc core::plugin_dir ~/code/chunkwm/plugins
+chunkc core::plugin_dir ~/.chunkwm_plugins
 
 #
 # NOTE: if enabled, chunkwm will monitor the specified plugin_dir
@@ -24,11 +24,11 @@ chunkc set 2_desktop_mode                bsp
 
 # chunkc set 1_desktop_tree                ~/.chunkwm_layouts/dev_1
 
-chunkc set global_desktop_offset_top     20
-chunkc set global_desktop_offset_bottom  20
-chunkc set global_desktop_offset_left    20
-chunkc set global_desktop_offset_right   20
-chunkc set global_desktop_offset_gap     15
+chunkc set global_desktop_offset_top     2
+chunkc set global_desktop_offset_bottom  2
+chunkc set global_desktop_offset_left    2
+chunkc set global_desktop_offset_right   2
+chunkc set global_desktop_offset_gap     2
 
 # chunkc set 1_desktop_offset_top          190
 # chunkc set 1_desktop_offset_bottom       190
@@ -41,8 +41,8 @@ chunkc set global_desktop_offset_gap     15
 # chunkc set 3_desktop_offset_left         190
 # chunkc set 3_desktop_offset_right        190
 
-chunkc set desktop_padding_step_size     10.0
-chunkc set desktop_gap_step_size         5.0
+chunkc set desktop_padding_step_size     2.0
+chunkc set desktop_gap_step_size         2.0
 
 chunkc set bsp_spawn_left                1
 chunkc set bsp_optimal_ratio             1.618
@@ -90,16 +90,16 @@ chunkc set focused_border_skip_floating  0
 #       if chunkc plugin_dir is not set, the absolutepath is necessary.
 #
 
-chunkc core::load api.so
-# chunkc core::load border.so
-# chunkc core::load tiling.so
-# chunkc core::load ffm.so
+# chunkc core::load api.so
+chunkc core::load border.so
+chunkc core::load tiling.so
+chunkc core::load ffm.so
 
 #
 # NOTE: shell commands require escaped quotes
 #       to pass value containing a whitespace.
 #
 
-# chunkc tiling::rule --owner "iTerm2.*" --state tile
-# chunkc tiling::rule --owner Finder --name Copy --state float
-# chunkc tiling::rule --owner \"App Store\" --state float
+chunkc tiling::rule --owner "iTerm2.*" --state tile
+chunkc tiling::rule --owner Finder --name Copy --state float
+chunkc tiling::rule --owner \"App Store\" --state float
